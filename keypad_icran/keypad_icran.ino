@@ -31,7 +31,7 @@ void setup() {
 
     i = -1;
 }
-
+//ололо пыщь пыщь
 void loop() {        
   int b = 0;
   int a = 0;
