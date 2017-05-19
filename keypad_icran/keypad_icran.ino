@@ -8,6 +8,7 @@
 int i;
 int oper = 0;
 int decision;
+boolean q;
 
 char keys[ROWS][COLS] = {
     {'1', '2', '3', '+'},
@@ -29,32 +30,39 @@ void setup() {
     lcd.home(); 
     Serial.begin(9600);
 
-    i = -1;
+    i = 0;
+    q = false;
 }
 
 void loop() {        
-  int b = 0;
-  int a = 0;
+  int b;
+  int a;
   String msg;
   char key = keypad.getKey();
   msg = key;
-  if(msg != "-" && msg != "+" && msg != "/" && msg != "*"){
-    if(oper == 0){ a = dataProcessing (msg); i = -1; }
-    else b = dataProcessing (msg);
-  }else{
+
+  if(msg == "-" || msg == "+" || msg == "/" || msg == "*"){
     if(msg == "-") oper = 1;
     if(msg == "+") oper = 2;
     if(msg == "/") oper = 3;
-    if(msg == "*") oper = 4;   
+    if(msg == "*") oper = 4; 
+    i = 0;
+    q = false;  
   }
-  if(a != 0 && b != 0 && msg == "=")
+  
+  if(oper == 0) a = dataProcessing (msg);
+  else b = dataProcessing (msg);
+
+
+  if(msg == "=")
     decision = counting(a, b, oper);
   
   
-//  Serial.println(decision);
   Serial.print(a);
   Serial.print(" MMM ");
-  Serial.println(b);
+  Serial.print(b);
+  Serial.print(" MMM ");
+  Serial.println(decision);
 
       
 //  lcdPrint(mcg2, 0, 0);
@@ -70,53 +78,93 @@ void lcdPrint(String msg, int numberStr, int startSymbol) {
 int dataProcessing (String msg){
     
   if(msg == "1"){
-    if(i == -1) i = 1;
-    else i = i * 10 + 1;
+    if(q == false) {
+      i = 1;
+      q = true;
+    }else{
+      i = i * 10 + 1;
+    }
   }
   
   if(msg == "2"){
-     if(i == -1) i = 2;
-    else i = i * 10 + 2;
+     if(q == false) {
+      i = 2;
+      q = true;
+     }else{ 
+      i = i * 10 + 2;
+     }
   }
   
   if(msg == "3"){
-     if(i == -1) i = 3;
-    else i = i * 10 + 3;
+     if(q == false) {
+      i = 3;
+      q = true;
+     }else{
+      i = i * 10 + 3;
+     }
   }
   
   if(msg == "4"){
-     if(i == -1) i = 4;
-    else i = i * 10 + 4;
+     if(q == false) {
+      i = 4;
+      q = true;
+     }else{
+      i = i * 10 + 4;
+     }
   }
   
   if(msg == "5"){
-     if(i == -1) i = 5;
-    else i = i * 10 + 5;
+     if(q == false) {
+      i = 5;
+      q = true;
+     }else{
+      i = i * 10 + 5;
+     }
   }
   
   if(msg == "6"){
-     if(i == -1) i = 6;
-    else i = i * 10 + 6;
+     if(q == false) {
+      i = 6;
+      q = true;
+     }else{
+      i = i * 10 + 6;
+     }
   }
   
   if(msg == "7"){
-     if(i == -1) i = 7;
-    else i = i * 10 + 7;
+     if(q == false) {
+      i = 7;
+      q = true;
+     }else{
+      i = i * 10 + 7;
+     }
   }
    
   if(msg == "8"){
-    if(i == -1) i = 8;
-    else i = i * 10 + 8;
+     if(q == false) {
+      i = 8;
+      q = true;
+     }else{
+      i = i * 10 + 8;
+     }
   }
 
   if(msg == "9"){
-    if(i == -1) i = 9;
-    else i = i * 10 + 9;
+     if(q == false) {
+      i = 9;
+      q = true;
+     }else{
+      i = i * 10 + 9;
+     }
   }
   
   if(msg == "0"){
-    if(i == -1) i = 0;
-    else i = i * 10;
+     if(q == false) {
+      i = 0;
+      q = true;
+     }else{
+      i = i * 10;
+     }
   }
   
   return i;
