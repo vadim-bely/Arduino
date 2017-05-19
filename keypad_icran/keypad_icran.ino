@@ -16,7 +16,7 @@ char keys[ROWS][COLS] = {
     {'7', '8', '9', '/'},
     {'*', '0', '#', '='}
 };
-
+// jj
 byte rowPins[ROWS] = {A1, A2, A3, A4};
 byte colPins[COLS] = {3, 4, 5, 6};
 
