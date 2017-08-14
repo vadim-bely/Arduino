@@ -4,8 +4,6 @@
 #include "Keypad.h"
 #include <stdlib.h>
 
-ыыы
-
 #define ROWS 4
 #define COLS 4
 int i;
@@ -51,7 +49,7 @@ void loop() {
   String* s = splitString(splitEquation("2+222*23111+(2+2)*22222"), ' ');
   Serial.println("-------");
   for (int i = 0; i < sizeof(s); i++) {
-    Serial.println(s[i]);
+//    Serial.println(s[i]);
   }
 
   delay(10000);
@@ -130,7 +128,7 @@ String splitEquation(String equation){
                     lastNum = "";
                 }
                 result += ch;
-                if (str != ')') {
+                if (ch != ')') {
                     result += " ";
                 }
             } else {
@@ -151,20 +149,20 @@ String* splitString(String equation, char separator) {
     int count = 0;
 
     for (i = 0; i < equation.length(); i++) {
-        char str = equationMass[i];
-        if (str != separator){
-            result[count] += str;
+        char ch = equationMass[i];
+        if (ch != separator){
+            result[count] += ch;
         } else {
             count++;
         }
     }
 
-        Serial.println(sizeof(result));
+//        Serial.println(sizeof(result));
     for (int i = 0; i < count+1; i++) {
-        Serial.println(result[i]);
+//        Serial.println(result[i]);
     }
 
-    String* mass = new String[count+1];
+    String* mass = malloc(count+1);
 
     for (int i = 0; i < count+1; i++) {
         mass[i] = result[i];
@@ -179,7 +177,7 @@ String* parenthesisPriority(String equation) {
 //  char* eq [equation.length()];
 
   String* equationMass/*[sizeof(splitString(equation, ' '))]*/ = splitString(equation, ' ');
-  // = equation.split(" "); убрать 9
+  // = equation.split(" ");
   String result[sizeof(equationMass)];
   String parenthesisMass[sizeof(equationMass) - 2];
   boolean brace = false;
