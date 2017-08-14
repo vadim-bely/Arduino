@@ -121,7 +121,7 @@ String splitEquation(String equation){
                 result += ch;
                 result += " ";
                 lastNum = "";
-            } else if (ch == '(' || str == ')') {
+            } else if (ch == '(' || ch == ')') {
                 if (lastNum != "") {
                     result += lastNum;
                     result += " ";
