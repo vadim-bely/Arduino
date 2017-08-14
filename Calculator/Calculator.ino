@@ -209,7 +209,7 @@ String* parenthesisPriority(String equation) {
 
   equationMass[countResult];
   memcpy(equationMass, result, countResult);
-//  System.arraycopy(result, 0, equationMass, 0, countResult);
+//  System.arraycopy(result, 0, equationMass, 0, countResult); f
   return equationMass;
   }
 
